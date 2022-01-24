@@ -1,0 +1,7 @@
+instance_1_name         = "prod_app1"
+instance_2_name         = "prod_app2"
+vpc_1_name              = "prod_vpc"
+subnet_1_name           = "prod_app1"
+subnet_2_name           = "prod_app2"
+internet_gateway_1_name = "prod_igw"
+load_balancer_1_name    = "prod-lb"

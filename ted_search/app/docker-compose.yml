@@ -1,0 +1,26 @@
+version: "3.1"
+services:
+  nginx:
+    image: nginx:1.21.4
+    ports: 
+      - "8080:8080" 
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      # - ./src/main/resources/static/index.html:/usr/share/nginx/html/index.html
+      - ./src/main/resources/static:/usr/share/nginx/static/
+    networks:
+      - frontend 
+    depends_on:
+      - app  
+
+  app:
+    image: 644435390668.dkr.ecr.us-east-1.amazonaws.com/hana-ted_search:latest
+    ports: 
+      - "8082:9191"  
+    networks:
+      - backend
+      - frontend  
+
+networks:
+    frontend:
+    backend:

@@ -1,0 +1,50 @@
+version: '3'
+services:
+  # dev:
+  #   image: maven:3.6.2-jdk-8
+  #   command: sleep inf
+  #   volumes:
+  #     - m2repo:/root/.m2/repository
+  #     - .:/tn
+  #     - ssh:/root/ssh
+
+  # gitlab:
+  #   image: 'gitlab/gitlab-ee:latest'
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - gl-config:/etc/gitlab
+  #     - gl-logs:/var/log/gitlab
+  #     - gl-data:/var/opt/gitlab
+  jenkins:
+    # image: public.ecr.aws/c7o8u9c1/jenkins_sudo:1.0 
+    image: public.ecr.aws/c7o8u9c1/reem_jdk8:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home 
+      - /var/run/docker.sock:/var/run/docker.sock
+      # - jm2repo:/var/jenkins_home/.m2/repository
+  
+
+  # artifactory: 
+  #   image: docker.bintray.io/jfrog/artifactory-oss:6.16.0 
+  #   ports: 
+  #     - "8081:8081" 
+  #   volumes:
+  #     - art-data:/var/opt/jfrog/artifactory
+
+volumes:
+  m2repo:
+  gl-config:
+  gl-logs:
+  gl-data:
+  jenkins_home:
+  # jm2repo:
+  art-data:
+  ssh:
+
+ 
+
+ 
+
